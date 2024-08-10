@@ -26,6 +26,10 @@ public class SpecificBreakPlaceListener implements Listener {
         org.bukkit.Location bukkitLocation = event.getBlock().getLocation();
         Material blockType = event.getBlock().getType();
 
+        if (player.hasPermission("worldguard.region.bypass." + bukkitLocation.getWorld().getName())) {
+            return;
+        }
+
         Location wgLocation = new Location(
                 BukkitAdapter.adapt(bukkitLocation.getWorld()),
                 Vector3.at(bukkitLocation.getX(), bukkitLocation.getY(), bukkitLocation.getZ())
@@ -50,6 +54,10 @@ public class SpecificBreakPlaceListener implements Listener {
         org.bukkit.Location bukkitLocation = event.getBlock().getLocation();
         Material blockType = event.getBlock().getType();
 
+        if (player.hasPermission("worldguard.region.bypass." + bukkitLocation.getWorld().getName())) {
+            return;
+        }
+
         Location wgLocation = new Location(
                 BukkitAdapter.adapt(bukkitLocation.getWorld()),
                 Vector3.at(bukkitLocation.getX(), bukkitLocation.getY(), bukkitLocation.getZ())
@@ -67,8 +75,6 @@ public class SpecificBreakPlaceListener implements Listener {
             event.setCancelled(allowedBlocks == null || !allowedBlocks.contains(blockType));
         }
     }
-
-    /// imi plac fetele
 
     private Set<Material> queryValue(Player player, ApplicableRegionSet regions, SetFlag<Material> flag) {
         return regions.queryValue(WorldGuardPlugin.inst().wrapPlayer(player), flag);
