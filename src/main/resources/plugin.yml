@@ -1,0 +1,6 @@
+name: SpecificBreakPlace
+version: '${project.version}'
+main: org.me.pyke.specificbreakplace.SpecificBreakPlace
+api-version: '1.20'
+author: mareleepyke
+depend: [WorldGuard]
